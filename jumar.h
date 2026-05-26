@@ -65,7 +65,7 @@ enum jumar_taps{
 #define KC_UNDO  LCTL(KC_Z)
 #define KC_REDO  LCTL(KC_Y)
 
-
+#ifdef TAP_DANCE_ENABLE
 //Tap Dance Definitions
 tap_dance_action_t tap_dance_actions[] = {
   //Tap once for Tab, twice for Escape
@@ -91,6 +91,8 @@ tap_dance_action_t tap_dance_actions[] = {
   [SLSH_BSLS]= ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_BSLS),
   [N2_N0]    = ACTION_TAP_DANCE_DOUBLE(KC_2, KC_0)
 };
+#endif
+
 #ifdef RGBLIGHT_ENABLE
 typedef union {
   uint32_t raw;
@@ -152,8 +154,8 @@ enum layer_names {
 // LAYER 2 MOUSE-MEDIA
 #define ROW5_LEFT_MOUSE_MEDIA SIX_TRNS
 #define ROW4_LEFT_MOUSE_MEDIA XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-#define ROW3_LEFT_MOUSE_MEDIA XXXXXXX, _______, _______, XXXXXXX, _______, XXXXXXX
-#define ROW2_LEFT_MOUSE_MEDIA XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+#define ROW3_LEFT_MOUSE_MEDIA XXXXXXX, _______, _______, XXXXXXX, KC_LCTL, XXXXXXX
+#define ROW2_LEFT_MOUSE_MEDIA _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 #define ROW1_LEFT_MOUSE_MEDIA                            XXXXXXX, MS_BTN3, MS_BTN2
 
 #define ROW5_RIGHT_MOUSE_MEDIA                                                      SIX_TRNS
@@ -165,7 +167,7 @@ enum layer_names {
 // LAYER 3 NAVIGATION-COPY-PASTA
 #define ROW5_LEFT_NAV_CPY_PASTA SIX_TRNS
 #define ROW4_LEFT_NAV_CPY_PASTA KC_PSCR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-#define ROW3_LEFT_NAV_CPY_PASTA XXXXXXX, XXXXXXX, _______, _______, _______, XXXXXXX
+#define ROW3_LEFT_NAV_CPY_PASTA XXXXXXX, XXXXXXX, KC_LSFT, _______, _______, XXXXXXX
 #define ROW2_LEFT_NAV_CPY_PASTA XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 #define ROW1_LEFT_NAV_CPY_PASTA                            _______, _______, _______
 

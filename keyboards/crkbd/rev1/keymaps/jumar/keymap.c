@@ -169,13 +169,13 @@ void render_layer_state(void) {
     switch (layer)
     {
         case _0_QWERTY:
-            oled_write_P(PSTR("QRTY\n"), true);
+            oled_write_P(PSTR("QWRTY\n"), true);
         break;
         case _1_SYMBOLS_NUMPAD:
             oled_write_P(PSTR("SyNum\n"), true);
         break;
         case _2_MOUSE_MEDIA:
-            oled_write_P(PSTR("Media\n"), true);
+            oled_write_P(PSTR("MoMed\n"), true);
         break;
         case _3_NAV:
             oled_write_P(PSTR("Nav\n"), true);

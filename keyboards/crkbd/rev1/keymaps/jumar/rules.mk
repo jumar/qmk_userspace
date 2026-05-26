@@ -7,6 +7,7 @@ OLED_ENABLE 		= yes
 OLED_DRIVER 		= ssd1306
 LTO_ENABLE          = no
 BOOTLOADER			= caterina
-TAP_DANCE_ENABLE = yes
+TAP_DANCE_ENABLE = no
+MOUSEKEY_ENABLE = yes
 
 USER_NAME := jumar
