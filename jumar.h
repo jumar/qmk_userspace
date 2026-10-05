@@ -65,6 +65,26 @@ enum jumar_taps{
 #define KC_UNDO  LCTL(KC_Z)
 #define KC_REDO  LCTL(KC_Y)
 
+// Home row and modifiers
+#define LT2_A    LT(2,KC_A)
+#define LSFT_S   LSFT_T(KC_S)
+#define LSFT_W   LSFT_T(KC_W)
+#define ALT_BSP  LALT_T(KC_BSPC)
+#define LT3_D    LT(3,KC_D)
+#define LCTL_F   LCTL_T(KC_F)
+#define LCTL_R   LCTL_T(KC_R)
+#define RCTL_J   RCTL_T(KC_J)
+#define LT5_K    LT(5,KC_K)
+#define RSFT_L   RSFT_T(KC_L)
+#define LSFT_KP  LSFT_T(KC_CAPS)
+#define LCTL_SP  LCTL_T(KC_SPC)
+#define LT3_SPC  LT(3,KC_SPC)
+#define LT3_ENT  LT(3,KC_ENT)
+#define LT1_DEL  LT(1,KC_DEL)
+#define LT6_GRV  LT(6,KC_GRV)
+#define LGU_ESC  LGUI_T(KC_ESC)
+#define ALT_BSP  LALT_T(KC_BSPC)
+
 #ifdef TAP_DANCE_ENABLE
 //Tap Dance Definitions
 tap_dance_action_t tap_dance_actions[] = {
@@ -130,7 +150,7 @@ enum layer_names {
 #define ROW4_LEFT_BASE KC_TAB  , KC_Q  , KC_W , KC_E  , KC_R , KC_T
 #define ROW3_LEFT_BASE KC_CAPS , KC_A  , KC_S , KC_D  , KC_F , KC_G
 #define ROW2_LEFT_BASE KC_LSFT , KC_Z  , KC_X , KC_C  , KC_V , KC_B
-#define ROW1_LEFT_BASE                    KC_ESC   , KC_BSPC    , KC_SPC
+#define ROW1_LEFT_BASE               KC_ESC   , KC_BSPC    , KC_SPC
 
 #define ROW5_RIGHT_BASE                                                 KC_6      , KC_7      , KC_8   , KC_9   , KC_0   , KC_BSPC
 #define ROW4_RIGHT_BASE                                                 KC_Y      , KC_U      , KC_I   , KC_O   , KC_P   , KC_BSPC

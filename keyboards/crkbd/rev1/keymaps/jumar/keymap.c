@@ -81,12 +81,13 @@ smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap
         SMTD_LT(KC_D, 3)
         SMTD_LT(KC_K, 5)
         // Thumb keys mods/layer toggles
-        SMTD_LT(KC_ENT, 3)
-        SMTD_LT(KC_DEL, 1)
-        SMTD_LT(KC_GRV, 6)
         SMTD_MT(KC_ESC, KC_LEFT_GUI)
         SMTD_MT(KC_BSPC, KC_LEFT_ALT)
         SMTD_MT(KC_SPC, KC_LEFT_CTRL)
+        SMTD_LT(KC_ENT, 3)
+        SMTD_LT(KC_DEL, 1)
+        SMTD_LT(KC_GRV, 6)
+
     }
 
     return SMTD_RESOLUTION_UNHANDLED;
