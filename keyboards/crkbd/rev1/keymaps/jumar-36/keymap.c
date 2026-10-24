@@ -26,128 +26,189 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 enum layer_names {
   _0_QWERTY = 0,
   _1_SYMBOLS_NUMPAD,
-  _2_MOUSE_MEDIA,
+  _2_MOUSE,
   _3_NAV,
   _4_GAM,
-  _5_RGB,
+  _5_SYS,
   _6_FN,
 };
 
 enum custom_keycodes {
-  RGB_LYR = SAFE_RANGE, // can always be here
-  E_AIGU_MACRO,
-  C_CEDILLE_MACRO
+  E_AIGU_MACRO = SAFE_RANGE,
+  C_CEDILLE_MACRO,
+  NAV_Q,
+  NAV_W,
+  NAV_E,
+  NAV_R,
+  NAV_X,
+  NAV_C,
+  NAV_M,
+  NAV_COMMA,
+  NAV_DOT,
+  NAV_SLASH
 };
 
 // Home row and modifiers
 #define LT2_A    LT(2,KC_A)
 #define LSFT_S   LSFT_T(KC_S)
 #define LSFT_W   LSFT_T(KC_W)
-#define ALT_BSP  LALT_T(KC_BSPC)
 #define LT3_D    LT(3,KC_D)
 #define LCTL_F   LCTL_T(KC_F)
 #define LCTL_R   LCTL_T(KC_R)
 #define RCTL_J   RCTL_T(KC_J)
-#define LT5_K    LT(5,KC_K)
 #define RSFT_L   RSFT_T(KC_L)
-#define LSFT_KP  LSFT_T(KC_CAPS)
 #define LCTL_SP  LCTL_T(KC_SPC)
-#define LT3_SPC  LT(3,KC_SPC)
-#define LT3_ENT  LT(3,KC_ENT)
-#define LT1_DEL  LT(1,KC_DEL)
-#define LT6_GRV  LT(6,KC_GRV)
-#define LGU_ESC  LGUI_T(KC_ESC)
-#define ALT_BSP  LALT_T(KC_BSPC)
 
 enum combos {
-  QW_TAB,
-  ER_TAB,
-  WE_EAIGU,
-  XC_CCEDILLE,
-  SL_CAPS,
-  YU_BSP,
-  UI_BSP,
-  DOTSLASH_BACKSLASH,
-  MCOMMA_BACKSLASH,
-  IO_NUMLCK,
+  QW_TAB_DEF, QW_TAB_NUM, QW_TAB_NAV,
+  ER_TAB_DEF, ER_TAB_NUM, ER_TAB_NAV,
+  WE_EAIGU_DEF, WE_EAIGU_NUM, WE_EAIGU_NAV,
+  XC_CCEDILLE_DEF, XC_CCEDILLE_NUM, XC_CCEDILLE_NAV,
+  SL_CAPS_DEF, SL_CAPS_NUM, SL_CAPS_NAV,
+  YU_BSP_DEF, YU_BSP_NUM, YU_BSP_NAV,
+  UI_BSP_DEF, UI_BSP_NUM, UI_BSP_NAV,
+  DOTSLASH_DEF, DOTSLASH_NUM, DOTSLASH_NAV,
+  MCOMMA_DEF, MCOMMA_NUM, MCOMMA_NAV,
+  OP_NUMLCK_NUM,
   LSEMICOLON_SINGLEQUOTE,
-  JK_SINGLEQUOTE,
-  DC_CCEDILLE
+  JK_SINGLEQUOTE_DEF, JK_SINGLEQUOTE_NUM,
+  KL_GRAVE_DEF, KL_GRAVE_NUM
 };
 
-const uint16_t PROGMEM qw_combo[] = {KC_Q, KC_W, COMBO_END};
-const uint16_t PROGMEM er_combo[] = {KC_E, KC_R, COMBO_END};
-const uint16_t PROGMEM eaigu_combo[] = {KC_W, KC_E, COMBO_END};
-const uint16_t PROGMEM ccedille_combo[] = {KC_X, KC_C, COMBO_END};
-const uint16_t PROGMEM sl_combo[] = {KC_S, KC_L, COMBO_END};
-const uint16_t PROGMEM yu_combo[] = {KC_Y, KC_U, COMBO_END};
-const uint16_t PROGMEM ui_combo[] = {KC_U, KC_I, COMBO_END};
-const uint16_t PROGMEM DOTSLASH_COMBO[] = {KC_DOT, KC_SLSH, COMBO_END};
-const uint16_t PROGMEM MCOMMA_BACKSLASH_COMBO[] = {KC_COMM, KC_BSLS, COMBO_END};
-const uint16_t PROGMEM io_numlck_combo[] = {KC_I, KC_O, COMBO_END};
-const uint16_t PROGMEM lsemicolon_singlequote_combo[] = {KC_SCLN, KC_QUOT, COMBO_END};
-const uint16_t PROGMEM jk_singlequote_combo[] = {KC_J, KC_K, COMBO_END};
-const uint16_t PROGMEM dc_ccedille_combo[] = {KC_D, KC_C, COMBO_END};
+const uint16_t PROGMEM qw_def_combo[] = {KC_Q, KC_W, COMBO_END};
+const uint16_t PROGMEM qw_num_combo[] = {KC_EXLM, KC_EQL, COMBO_END};
+const uint16_t PROGMEM qw_nav_combo[] = {NAV_Q, NAV_W, COMBO_END};
+const uint16_t PROGMEM er_def_combo[] = {KC_E, KC_R, COMBO_END};
+const uint16_t PROGMEM er_num_combo[] = {KC_LPRN, KC_RPRN, COMBO_END};
+const uint16_t PROGMEM er_nav_combo[] = {NAV_E, NAV_R, COMBO_END};
+const uint16_t PROGMEM we_def_combo[] = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM we_num_combo[] = {KC_EQL, KC_LPRN, COMBO_END};
+const uint16_t PROGMEM we_nav_combo[] = {NAV_W, NAV_E, COMBO_END};
+const uint16_t PROGMEM xc_def_combo[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM xc_num_combo[] = {KC_CIRC, KC_LBRC, COMBO_END};
+const uint16_t PROGMEM xc_nav_combo[] = {NAV_X, NAV_C, COMBO_END};
+const uint16_t PROGMEM sl_def_combo[] = {KC_S, KC_L, COMBO_END};
+const uint16_t PROGMEM sl_num_combo[] = {KC_ASTR, KC_P6, COMBO_END};
+const uint16_t PROGMEM sl_nav_combo[] = {KC_S, KC_RGHT, COMBO_END};
+const uint16_t PROGMEM yu_def_combo[] = {KC_Y, KC_U, COMBO_END};
+const uint16_t PROGMEM yu_num_combo[] = {KC_UNDS, KC_P7, COMBO_END};
+const uint16_t PROGMEM yu_nav_combo[] = {KC_PGUP, KC_HOME, COMBO_END};
+const uint16_t PROGMEM ui_def_combo[] = {KC_U, KC_I, COMBO_END};
+const uint16_t PROGMEM ui_num_combo[] = {KC_P7, KC_P8, COMBO_END};
+const uint16_t PROGMEM ui_nav_combo[] = {KC_HOME, KC_UP, COMBO_END};
+const uint16_t PROGMEM dot_slash_def_combo[] = {KC_DOT, KC_SLSH, COMBO_END};
+const uint16_t PROGMEM dot_slash_num_combo[] = {KC_P3, KC_PAST, COMBO_END};
+const uint16_t PROGMEM dot_slash_nav_combo[] = {NAV_DOT, NAV_SLASH, COMBO_END};
+const uint16_t PROGMEM m_comma_def_combo[] = {KC_M, KC_COMM, COMBO_END};
+const uint16_t PROGMEM m_comma_num_combo[] = {KC_P1, KC_P2, COMBO_END};
+const uint16_t PROGMEM m_comma_nav_combo[] = {NAV_M, NAV_COMMA, COMBO_END};
+const uint16_t PROGMEM op_numlck_combo[] = {KC_P9, KC_PPLS, COMBO_END};
+const uint16_t PROGMEM l_semicolon_quote_combo[] = {KC_L, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM jk_def_combo[] = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM jk_num_combo[] = {KC_P4, KC_P5, COMBO_END};
+const uint16_t PROGMEM kl_def_combo[] = {KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM kl_num_combo[] = {KC_P5, KC_P6, COMBO_END};
 
 combo_t key_combos[] = {
-  [QW_TAB] = COMBO(qw_combo, KC_TAB),
-  [ER_TAB] = COMBO(er_combo, KC_TAB),
-  [WE_EAIGU] = COMBO(eaigu_combo, E_AIGU_MACRO),
-  [XC_CCEDILLE] = COMBO(ccedille_combo, C_CEDILLE_MACRO),
-  [SL_CAPS] = COMBO(sl_combo, KC_CAPS),
-  [YU_BSP] = COMBO(yu_combo, KC_BSPC),
-  [UI_BSP] = COMBO(ui_combo, KC_BSPC),
-  [DOTSLASH_BACKSLASH] = COMBO(DOTSLASH_COMBO, KC_BSLS),
-  [MCOMMA_BACKSLASH] = COMBO(MCOMMA_BACKSLASH_COMBO, KC_BSLS),
-  [IO_NUMLCK] = COMBO(io_numlck_combo, KC_NUM),
-  [LSEMICOLON_SINGLEQUOTE] = COMBO(lsemicolon_singlequote_combo, KC_QUOT),
-  [JK_SINGLEQUOTE] = COMBO(jk_singlequote_combo, KC_QUOT),
-  [DC_CCEDILLE] = COMBO(dc_ccedille_combo, C_CEDILLE_MACRO)
+  [QW_TAB_DEF] = COMBO(qw_def_combo, KC_TAB),
+  [QW_TAB_NUM] = COMBO(qw_num_combo, KC_TAB),
+  [QW_TAB_NAV] = COMBO(qw_nav_combo, KC_TAB),
+  [ER_TAB_DEF] = COMBO(er_def_combo, KC_TAB),
+  [ER_TAB_NUM] = COMBO(er_num_combo, KC_TAB),
+  [ER_TAB_NAV] = COMBO(er_nav_combo, KC_TAB),
+  [WE_EAIGU_DEF] = COMBO(we_def_combo, E_AIGU_MACRO),
+  [WE_EAIGU_NUM] = COMBO(we_num_combo, E_AIGU_MACRO),
+  [WE_EAIGU_NAV] = COMBO(we_nav_combo, E_AIGU_MACRO),
+  [XC_CCEDILLE_DEF] = COMBO(xc_def_combo, C_CEDILLE_MACRO),
+  [XC_CCEDILLE_NUM] = COMBO(xc_num_combo, C_CEDILLE_MACRO),
+  [XC_CCEDILLE_NAV] = COMBO(xc_nav_combo, C_CEDILLE_MACRO),
+  [SL_CAPS_DEF] = COMBO(sl_def_combo, KC_CAPS),
+  [SL_CAPS_NUM] = COMBO(sl_num_combo, KC_CAPS),
+  [SL_CAPS_NAV] = COMBO(sl_nav_combo, KC_CAPS),
+  [YU_BSP_DEF] = COMBO(yu_def_combo, KC_BSPC),
+  [YU_BSP_NUM] = COMBO(yu_num_combo, KC_BSPC),
+  [YU_BSP_NAV] = COMBO(yu_nav_combo, KC_BSPC),
+  [UI_BSP_DEF] = COMBO(ui_def_combo, KC_BSPC),
+  [UI_BSP_NUM] = COMBO(ui_num_combo, KC_BSPC),
+  [UI_BSP_NAV] = COMBO(ui_nav_combo, KC_BSPC),
+  [DOTSLASH_DEF] = COMBO(dot_slash_def_combo, KC_BSLS),
+  [DOTSLASH_NUM] = COMBO(dot_slash_num_combo, KC_BSLS),
+  [DOTSLASH_NAV] = COMBO(dot_slash_nav_combo, KC_BSLS),
+  [MCOMMA_DEF] = COMBO(m_comma_def_combo, KC_BSLS),
+  [MCOMMA_NUM] = COMBO(m_comma_num_combo, KC_BSLS),
+  [MCOMMA_NAV] = COMBO(m_comma_nav_combo, KC_BSLS),
+  [OP_NUMLCK_NUM] = COMBO(op_numlck_combo, KC_NUM),
+  [LSEMICOLON_SINGLEQUOTE] = COMBO(l_semicolon_quote_combo, KC_QUOT),
+  [JK_SINGLEQUOTE_DEF] = COMBO(jk_def_combo, KC_QUOT),
+  [JK_SINGLEQUOTE_NUM] = COMBO(jk_num_combo, KC_QUOT),
+  [KL_GRAVE_DEF] = COMBO(kl_def_combo, KC_GRV),
+  [KL_GRAVE_NUM] = COMBO(kl_num_combo, KC_GRV)
 };
+
+static uint16_t last_keypress_time;
+
+bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
+    UNUSED(combo);
+    UNUSED(keycode);
+    uint8_t layer = get_highest_layer(layer_state);
+
+    if (record->event.pressed && timer_elapsed(last_keypress_time) < COMBO_IDLE_TERM) {
+        return false;
+    }
+
+    switch (combo_index) {
+        case OP_NUMLCK_NUM:
+            return layer == _1_SYMBOLS_NUMPAD;
+        case LSEMICOLON_SINGLEQUOTE:
+            return layer == _0_QWERTY;
+        default:
+            return layer == _0_QWERTY || layer == _1_SYMBOLS_NUMPAD || layer == _3_NAV;
+    }
+}
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_0_QWERTY] = LAYOUT_split_3x6_3(
         //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-               KC_TAB   ,     KC_Q    ,     KC_W    ,     KC_E    ,     KC_R    ,     KC_T    ,      KC_Y     ,    KC_U     ,     KC_I    ,     KC_O    ,     KC_P    ,    KC_BSPC  ,
+               KC_NO    ,     KC_Q    ,     KC_W    ,     KC_E    ,     KC_R    ,     KC_T    ,      KC_Y     ,    KC_U     ,     KC_I    ,     KC_O    ,     KC_P    ,    KC_NO     ,
         //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┬─────────────┼─────────────┤
-               KC_CAPS  ,     KC_A    ,     KC_S    ,     KC_D    ,     KC_F    ,     KC_G    ,      KC_H     ,    KC_J     ,     KC_K    ,     KC_L    ,    KC_SCLN  ,    KC_QUOT  ,
+               KC_NO    ,     KC_A    ,     KC_S    ,     KC_D    ,     KC_F    ,     KC_G    ,      KC_H     ,    KC_J     ,     KC_K    ,     KC_L    ,    KC_SCLN  ,    KC_NO     ,
         //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-               KC_LSFT  ,     KC_Z    ,     KC_X    ,     KC_C    ,     KC_V    ,     KC_B    ,      KC_N     ,    KC_M     ,   KC_COMM   ,    KC_DOT   ,    KC_SLSH  ,    KC_SLSH  ,
+               KC_NO    ,     KC_Z    ,     KC_X    ,     KC_C    ,     KC_V    ,     KC_B    ,      KC_N     ,    KC_M     ,   KC_COMM   ,    KC_DOT   ,    KC_SLSH  ,    KC_NO     ,
         //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴───────────────────────────╯
-                                                         KC_ESC   ,    KC_BSPC  ,    KC_SPC   ,     KC_ENT    ,    KC_DEL   ,   KC_GRV
+                                                         KC_ESC   ,    KC_TAB   ,    KC_SPC   ,     KC_ENT    ,    KC_DEL   ,   KC_GRV
         //                                          ╰─────────────┴─────────────┴─────────────╯ ╰─────────────┴─────────────┴─────────────╯
     ),
 	[_1_SYMBOLS_NUMPAD] = LAYOUT_split_3x6_3(
         //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-              _______   ,   KC_EXLM   ,    KC_EQL   ,   KC_LPRN   ,   KC_RPRN   ,   KC_PIPE   ,     KC_UNDS   ,     KC_7    ,     KC_8    ,     KC_9    ,   KC_PLUS   ,   _______   ,
+              KC_NO     ,   KC_EXLM   ,    KC_EQL   ,   KC_LPRN   ,   KC_RPRN   ,   KC_PIPE   ,     KC_UNDS   ,     KC_P7   ,     KC_P8   ,     KC_P9   ,   KC_PPLS   ,   KC_NO     ,
         //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┬─────────────┼─────────────┤
-              _______   ,   KC_PERC   ,    KC_ASTR  ,   KC_LCBR   ,   KC_RCBR   ,   KC_AMPR   ,     KC_AT     ,     KC_4    ,     KC_5    ,     KC_6    ,   KC_MINS   ,   _______   ,
+              KC_NO     ,   KC_PERC   ,    KC_ASTR  ,   KC_LCBR   ,   KC_RCBR   ,   KC_AMPR   ,     KC_AT     ,     KC_P4   ,     KC_P5   ,     KC_P6   ,   KC_PMNS   ,   KC_NO     ,
         //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-              _______   ,   KC_HASH   ,    KC_CIRC  ,   KC_LBRC   ,   KC_RBRC   ,   KC_TILD   ,     KC_DLR    ,     KC_1    ,     KC_2    ,     KC_3    ,   KC_ASTR   ,   _______   ,
+              KC_NO     ,   KC_HASH   ,    KC_CIRC  ,   KC_LBRC   ,   KC_RBRC   ,   KC_TILD   ,     KC_DLR    ,     KC_P1   ,     KC_P2   ,     KC_P3   ,   KC_PAST   ,   KC_NO     ,
         //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┴─────────────┴───────────────────────────╯
-                                                      TG(_5_RGB)  , TG(_4_GAM)  ,   _______   ,     _______   ,   _______   ,     KC_0
+                                                      KC_NO       , TG(_5_SYS)  ,   _______   ,     _______   ,   _______   ,     KC_P0
         //                                          ╰─────────────┴─────────────┴─────────────╯ ╰─────────────┴─────────────┴─────────────╯
     ),
-	[_2_MOUSE_MEDIA] = LAYOUT_split_3x6_3(
+	[_2_MOUSE] = LAYOUT_split_3x6_3(
         //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-              XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,     MS_WHLU   ,   XXXXXXX   ,   MS_UP     ,   XXXXXXX   ,   MS_WHLU   ,   MS_ACL0   ,
+              KC_NO     ,   _______   ,   _______   ,   _______   ,   _______   ,   _______   ,     MS_WHLU   ,   MS_WHLL   ,   MS_UP     ,   MS_WHLR   ,   KC_NO     ,   KC_NO     ,
         //├─────────────├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-              XXXXXXX   ,   _______   ,   _______   ,   XXXXXXX   ,   KC_LCTL   ,   XXXXXXX   ,     MS_WHLD   ,   MS_LEFT   ,   MS_DOWN   ,   MS_RGHT   ,   MS_WHLD   ,   MS_ACL1   ,
+              KC_NO     ,   _______   ,   _______   ,   _______   ,   _______   ,   _______   ,     MS_WHLD   ,   MS_LEFT   ,   MS_DOWN   ,   MS_RGHT   ,   KC_NO     ,   KC_NO     ,
         //├─────────────├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-              _______   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,     XXXXXXX   ,   KC_VOLD   ,   KC_MUTE   ,   KC_VOLU   ,   XXXXXXX   ,   MS_ACL2   ,
+              KC_NO     ,   _______   ,   _______   ,   _______   ,   _______   ,   _______   ,     KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,
         //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┴───────────────────────────╯
-                                                        _______   ,   _______   ,   _______   ,     MS_BTN1    ,  KC_MPLY   ,   KC_MFFD
+                                                        _______   ,   _______   ,   _______   ,     MS_BTN1    ,  MS_BTN2   ,   MS_BTN3
         //                                          ╰─────────────┴─────────────┴─────────────╯ ╰─────────────┴─────────────┴─────────────╯
     ),
 	[_3_NAV] = LAYOUT_split_3x6_3(
         //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-              KC_PSCR   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,     KC_PGUP   ,   KC_HOME   ,   KC_UP     ,   KC_END    ,   XXXXXXX   ,   KC_PSCR   ,
+              KC_NO     ,   NAV_Q     ,   NAV_W     ,   NAV_E     ,   NAV_R     ,   KC_NO     ,     KC_PGUP   ,   KC_HOME   ,   KC_UP     ,   KC_END    ,   KC_PSCR   ,   KC_NO     ,
         //├─────────────├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-              XXXXXXX   ,   XXXXXXX   ,   KC_LSFT   ,   _______   ,   _______   ,   XXXXXXX   ,     KC_PGDN   ,   KC_LEFT   ,   KC_DOWN   ,   KC_RGHT   ,   KC_APP    ,   XXXXXXX   ,
+              KC_NO     ,   KC_NO     ,   _______   ,   _______   ,   _______   ,   _______   ,     KC_PGDN   ,   KC_LEFT   ,   KC_DOWN   ,   KC_RGHT   ,   KC_NO     ,   KC_NO     ,
         //├─────────────├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-              XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,     KC_INS    ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,
+              KC_NO     ,   KC_NO     ,   NAV_X     ,   NAV_C     ,   KC_NO     ,   KC_NO     ,     KC_INS    ,   NAV_M     ,   NAV_COMMA ,   NAV_DOT   ,   NAV_SLASH ,   KC_NO     ,
         //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┴───────────────────────────╯
-                                                        _______   ,   _______   ,   _______   ,     _______    ,  KC_APP    ,   XXXXXXX
+                                                        _______   ,   _______   ,   _______   ,     _______    ,  KC_APP    ,   KC_NO
         //                                          ╰─────────────┴─────────────┴─────────────╯ ╰─────────────┴─────────────┴─────────────╯
     ),
     [_4_GAM] = LAYOUT_split_3x6_3(
@@ -161,24 +222,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                          KC_GRV   ,    KC_LALT  ,    KC_SPC   ,     KC_ENT    ,    KC_DEL   ,  TG(_4_GAM)
         //                                          ╰─────────────┴─────────────┴─────────────╯ ╰─────────────┴─────────────┴─────────────╯
     ),
-   [_5_RGB] = LAYOUT_split_3x6_3(
+   [_5_SYS] = LAYOUT_split_3x6_3(
         //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-              XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,     XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,
+              KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,     KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,
         //├─────────────├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-              UG_TOGG   ,   UG_NEXT   ,   UG_SATU   ,   UG_HUEU   ,   UG_VALU   ,   UG_SPDU   ,     QK_RBT    ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,
+              KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,     QK_RBT    ,   KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,
         //├─────────────├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-              XXXXXXX   ,   UG_PREV   ,   UG_SATD   ,   UG_HUED   ,   UG_VALD   ,   UG_SPDD   ,     QK_BOOT   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,
+              KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,     QK_BOOT   ,   KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,
         //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┴───────────────────────────╯
-                                                        _______   ,   _______   ,    RGB_LYR  ,     UG_TOGG    ,  XXXXXXX   ,  TG(_5_RGB)
+                                                        KC_NO     ,   KC_NO     ,    KC_NO    ,     KC_NO      ,  KC_NO     ,  TG(_5_SYS)
         //                                          ╰─────────────┴─────────────┴─────────────╯ ╰─────────────┴─────────────┴─────────────╯
     ),
    [_6_FN] = LAYOUT_split_3x6_3(
         //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮ ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-              XXXXXXX   ,   XXXXXXX   ,    KC_F7    ,    KC_F8    ,    KC_F9    ,   KC_F10    ,     XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,
+              KC_NO     ,   KC_NO     ,    KC_F7    ,    KC_F8    ,    KC_F9    ,   KC_F10    ,     KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,   KC_NO     ,
         //├─────────────├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-              XXXXXXX   ,   XXXXXXX   ,    KC_F4    ,    KC_F5    ,    KC_F6    ,   KC_F11    ,     XXXXXXX   ,   _______   ,   XXXXXXX   ,   _______   ,    KC_UP    ,   XXXXXXX   ,
+              KC_NO     ,   KC_NO     ,    KC_F4    ,    KC_F5    ,    KC_F6    ,   KC_F11    ,     KC_NO     ,   KC_NO     ,   KC_NO     ,    KC_UP    ,   KC_NO     ,   KC_NO     ,
         //├─────────────├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-              XXXXXXX   ,   XXXXXXX   ,    KC_F1    ,    KC_F2    ,    KC_F3    ,   KC_F12    ,     XXXXXXX   ,   XXXXXXX   ,   XXXXXXX   ,   KC_LEFT   ,   KC_DOWN   ,   KC_RGHT   ,
+              KC_NO     ,   KC_NO     ,    KC_F1    ,    KC_F2    ,    KC_F3    ,   KC_F12    ,     KC_NO     ,   KC_NO     ,   KC_LEFT   ,   KC_DOWN   ,   KC_RGHT   ,   KC_NO     ,
         //╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤ ├─────────────┼─────────────┼─────────────┼─────────────┴───────────────────────────╯
                                                         _______   ,   _______   ,   _______   ,     _______   ,   _______   ,   _______
         //                                          ╰─────────────┴─────────────┴─────────────╯ ╰─────────────┴─────────────┴─────────────╯
@@ -189,21 +250,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
     switch (keycode) {
         // home row mods
-        SMTD_MT(KC_F, KC_LEFT_CTRL)
-        SMTD_MT(KC_J, KC_RIGHT_CTRL)
-        SMTD_MT(KC_S, KC_LSFT)
-        SMTD_MT(KC_L, KC_RSFT)
+        SMTD_MT(KC_F, KC_LEFT_CTRL, 280)
+        SMTD_MT(KC_J, KC_RIGHT_CTRL, 280)
+        SMTD_MT(KC_S, KC_LSFT, 280)
+        SMTD_MT(KC_L, KC_RSFT, 280)
+        SMTD_MT(KC_ASTR, KC_LEFT_SHIFT, 280)
         // home row Layer Toggles
-        SMTD_LT(KC_A, 2)
-        SMTD_LT(KC_D, 3)
-        SMTD_LT(KC_K, 5)
+        SMTD_LT(KC_A, 2, 200)
+        SMTD_LT(KC_D, 3, 200)
         // Thumb keys mods/layer toggles
-        SMTD_MT(KC_ESC, KC_LEFT_GUI)
-        SMTD_MT(KC_BSPC, KC_LEFT_ALT)
-        SMTD_MT(KC_SPC, KC_LEFT_CTRL)
-        SMTD_LT(KC_ENT, 3)
-        SMTD_LT(KC_DEL, 1)
-        SMTD_LT(KC_GRV, 6)
+        SMTD_MT(KC_ESC, KC_LEFT_GUI, 200)
+        SMTD_MT(KC_TAB, KC_LEFT_ALT, 200)
+        SMTD_MT(KC_SPC, KC_LEFT_CTRL, 200)
+        SMTD_LT(KC_ENT, 3, 200)
+        SMTD_LT(KC_DEL, 1, 200)
+        SMTD_LT(KC_GRV, 6, 200)
 
     }
 
@@ -293,8 +354,8 @@ void render_layer_state(void) {
         case _1_SYMBOLS_NUMPAD:
             oled_write_P(PSTR("SyNum\n"), true);
         break;
-        case _2_MOUSE_MEDIA:
-            oled_write_P(PSTR("MoMed\n"), true);
+        case _2_MOUSE:
+            oled_write_P(PSTR("Mouse\n"), true);
         break;
         case _3_NAV:
             oled_write_P(PSTR("Nav\n"), true);
@@ -302,8 +363,8 @@ void render_layer_state(void) {
         case _4_GAM:
             oled_write_P(PSTR("Game\n"), true);
         break;
-        case _5_RGB:
-            oled_write_P(PSTR("RGB\n"), true);
+        case _5_SYS:
+            oled_write_P(PSTR("Sys\n"), true);
         break;
         case _6_FN:
             oled_write_P(PSTR("FN\n"), true);
@@ -366,19 +427,29 @@ bool oled_task_user(void) {
     }
     return false;
 }
+#endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
+        last_keypress_time = timer_read();
+    }
+
+    if (keycode >= NAV_Q && keycode <= NAV_SLASH) {
+        return false;
+    }
+
+    if (record->event.pressed) {
         switch (keycode) {
             case E_AIGU_MACRO:
-                SEND_STRING("é");
+                tap_code(KC_QUOT);
+                tap_code(KC_E);
                 return false;
             case C_CEDILLE_MACRO:
-                SEND_STRING("ç");
+                tap_code(KC_QUOT);
+                tap_code(KC_C);
                 return false;
         }
         //add_keylog(keycode);
     }
     return true;
 }
-#endif

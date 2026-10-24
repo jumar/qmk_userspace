@@ -28,6 +28,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define USE_SERIAL_PD2
 
+#define COMBO_TERM 25
+#define COMBO_IDLE_TERM 150
+#define COMBO_SHOULD_TRIGGER
+#define SMTD_GLOBAL_SEQUENCE_TERM 175
+#define MOUSEKEY_DELAY 0
+#define MOUSEKEY_TIME_TO_MAX 500
+#define MOUSEKEY_WHEEL_DELAY 0
+#define MOUSEKEY_WHEEL_DELTA 20
+#define MOUSEKEY_WHEEL_MAX_SPEED 1
+#define MOUSEKEY_WHEEL_TIME_TO_MAX 300
+
 #ifdef RGBLIGHT_ENABLE
     #undef RGBLED_NUM
     #define RGBLIGHT_ANIMATIONS
