@@ -1,6 +1,7 @@
 {
     "userspace_version": "1.1",
     "build_targets": [
-        ["crkbd/rev1", "jumar"]
+        ["crkbd/rev1", "jumar"],
+        ["crkbd/rev1", "jumar_36"]
     ]
 }

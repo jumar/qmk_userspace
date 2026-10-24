@@ -110,59 +110,100 @@ const uint16_t PROGMEM kl_def_combo[] = {KC_K, KC_L, COMBO_END};
 const uint16_t PROGMEM kl_num_combo[] = {KC_P5, KC_P6, COMBO_END};
 
 combo_t key_combos[] = {
-  [QW_TAB_DEF] = COMBO(qw_def_combo, KC_TAB),
-  [QW_TAB_NUM] = COMBO(qw_num_combo, KC_TAB),
-  [QW_TAB_NAV] = COMBO(qw_nav_combo, KC_TAB),
-  [ER_TAB_DEF] = COMBO(er_def_combo, KC_TAB),
-  [ER_TAB_NUM] = COMBO(er_num_combo, KC_TAB),
-  [ER_TAB_NAV] = COMBO(er_nav_combo, KC_TAB),
-  [WE_EAIGU_DEF] = COMBO(we_def_combo, E_AIGU_MACRO),
-  [WE_EAIGU_NUM] = COMBO(we_num_combo, E_AIGU_MACRO),
-  [WE_EAIGU_NAV] = COMBO(we_nav_combo, E_AIGU_MACRO),
-  [XC_CCEDILLE_DEF] = COMBO(xc_def_combo, C_CEDILLE_MACRO),
-  [XC_CCEDILLE_NUM] = COMBO(xc_num_combo, C_CEDILLE_MACRO),
-  [XC_CCEDILLE_NAV] = COMBO(xc_nav_combo, C_CEDILLE_MACRO),
-  [SL_CAPS_DEF] = COMBO(sl_def_combo, KC_CAPS),
-  [SL_CAPS_NUM] = COMBO(sl_num_combo, KC_CAPS),
-  [SL_CAPS_NAV] = COMBO(sl_nav_combo, KC_CAPS),
-  [YU_BSP_DEF] = COMBO(yu_def_combo, KC_BSPC),
-  [YU_BSP_NUM] = COMBO(yu_num_combo, KC_BSPC),
-  [YU_BSP_NAV] = COMBO(yu_nav_combo, KC_BSPC),
-  [UI_BSP_DEF] = COMBO(ui_def_combo, KC_BSPC),
-  [UI_BSP_NUM] = COMBO(ui_num_combo, KC_BSPC),
-  [UI_BSP_NAV] = COMBO(ui_nav_combo, KC_BSPC),
-  [DOTSLASH_DEF] = COMBO(dot_slash_def_combo, KC_BSLS),
-  [DOTSLASH_NUM] = COMBO(dot_slash_num_combo, KC_BSLS),
-  [DOTSLASH_NAV] = COMBO(dot_slash_nav_combo, KC_BSLS),
-  [MCOMMA_DEF] = COMBO(m_comma_def_combo, KC_BSLS),
-  [MCOMMA_NUM] = COMBO(m_comma_num_combo, KC_BSLS),
-  [MCOMMA_NAV] = COMBO(m_comma_nav_combo, KC_BSLS),
-  [OP_NUMLCK_NUM] = COMBO(op_numlck_combo, KC_NUM),
-  [LSEMICOLON_SINGLEQUOTE] = COMBO(l_semicolon_quote_combo, KC_QUOT),
-  [JK_SINGLEQUOTE_DEF] = COMBO(jk_def_combo, KC_QUOT),
-  [JK_SINGLEQUOTE_NUM] = COMBO(jk_num_combo, KC_QUOT),
-  [KL_GRAVE_DEF] = COMBO(kl_def_combo, KC_GRV),
-  [KL_GRAVE_NUM] = COMBO(kl_num_combo, KC_GRV)
+  [QW_TAB_DEF] = COMBO_ACTION(qw_def_combo),
+  [QW_TAB_NUM] = COMBO_ACTION(qw_num_combo),
+  [QW_TAB_NAV] = COMBO_ACTION(qw_nav_combo),
+  [ER_TAB_DEF] = COMBO_ACTION(er_def_combo),
+  [ER_TAB_NUM] = COMBO_ACTION(er_num_combo),
+  [ER_TAB_NAV] = COMBO_ACTION(er_nav_combo),
+  [WE_EAIGU_DEF] = COMBO_ACTION(we_def_combo),
+  [WE_EAIGU_NUM] = COMBO_ACTION(we_num_combo),
+  [WE_EAIGU_NAV] = COMBO_ACTION(we_nav_combo),
+  [XC_CCEDILLE_DEF] = COMBO_ACTION(xc_def_combo),
+  [XC_CCEDILLE_NUM] = COMBO_ACTION(xc_num_combo),
+  [XC_CCEDILLE_NAV] = COMBO_ACTION(xc_nav_combo),
+  [SL_CAPS_DEF] = COMBO_ACTION(sl_def_combo),
+  [SL_CAPS_NUM] = COMBO_ACTION(sl_num_combo),
+  [SL_CAPS_NAV] = COMBO_ACTION(sl_nav_combo),
+  [YU_BSP_DEF] = COMBO_ACTION(yu_def_combo),
+  [YU_BSP_NUM] = COMBO_ACTION(yu_num_combo),
+  [YU_BSP_NAV] = COMBO_ACTION(yu_nav_combo),
+  [UI_BSP_DEF] = COMBO_ACTION(ui_def_combo),
+  [UI_BSP_NUM] = COMBO_ACTION(ui_num_combo),
+  [UI_BSP_NAV] = COMBO_ACTION(ui_nav_combo),
+  [DOTSLASH_DEF] = COMBO_ACTION(dot_slash_def_combo),
+  [DOTSLASH_NUM] = COMBO_ACTION(dot_slash_num_combo),
+  [DOTSLASH_NAV] = COMBO_ACTION(dot_slash_nav_combo),
+  [MCOMMA_DEF] = COMBO_ACTION(m_comma_def_combo),
+  [MCOMMA_NUM] = COMBO_ACTION(m_comma_num_combo),
+  [MCOMMA_NAV] = COMBO_ACTION(m_comma_nav_combo),
+  [OP_NUMLCK_NUM] = COMBO_ACTION(op_numlck_combo),
+  [LSEMICOLON_SINGLEQUOTE] = COMBO_ACTION(l_semicolon_quote_combo),
+  [JK_SINGLEQUOTE_DEF] = COMBO_ACTION(jk_def_combo),
+  [JK_SINGLEQUOTE_NUM] = COMBO_ACTION(jk_num_combo),
+  [KL_GRAVE_DEF] = COMBO_ACTION(kl_def_combo),
+  [KL_GRAVE_NUM] = COMBO_ACTION(kl_num_combo)
 };
 
-static uint16_t last_keypress_time;
-
-bool combo_should_trigger(uint16_t combo_index, combo_t *combo, uint16_t keycode, keyrecord_t *record) {
-    UNUSED(combo);
-    UNUSED(keycode);
-    uint8_t layer = get_highest_layer(layer_state);
-
-    if (record->event.pressed && timer_elapsed(last_keypress_time) < COMBO_IDLE_TERM) {
-        return false;
+void process_combo_event(uint16_t combo_index, bool pressed) {
+    if (!pressed) {
+        return;
     }
 
     switch (combo_index) {
+        case QW_TAB_DEF:
+        case QW_TAB_NUM:
+        case QW_TAB_NAV:
+        case ER_TAB_DEF:
+        case ER_TAB_NUM:
+        case ER_TAB_NAV:
+            tap_code(KC_TAB);
+            break;
+        case WE_EAIGU_DEF:
+        case WE_EAIGU_NUM:
+        case WE_EAIGU_NAV:
+            tap_code(KC_QUOT);
+            tap_code(KC_E);
+            break;
+        case XC_CCEDILLE_DEF:
+        case XC_CCEDILLE_NUM:
+        case XC_CCEDILLE_NAV:
+            tap_code(KC_QUOT);
+            tap_code(KC_C);
+            break;
+        case SL_CAPS_DEF:
+        case SL_CAPS_NUM:
+        case SL_CAPS_NAV:
+            tap_code(KC_CAPS);
+            break;
+        case YU_BSP_DEF:
+        case YU_BSP_NUM:
+        case YU_BSP_NAV:
+        case UI_BSP_DEF:
+        case UI_BSP_NUM:
+        case UI_BSP_NAV:
+            tap_code(KC_BSPC);
+            break;
+        case DOTSLASH_DEF:
+        case DOTSLASH_NUM:
+        case DOTSLASH_NAV:
+        case MCOMMA_DEF:
+        case MCOMMA_NUM:
+        case MCOMMA_NAV:
+            tap_code(KC_BSLS);
+            break;
         case OP_NUMLCK_NUM:
-            return layer == _1_SYMBOLS_NUMPAD;
+            tap_code(KC_NUM);
+            break;
         case LSEMICOLON_SINGLEQUOTE:
-            return layer == _0_QWERTY;
-        default:
-            return layer == _0_QWERTY || layer == _1_SYMBOLS_NUMPAD || layer == _3_NAV;
+        case JK_SINGLEQUOTE_DEF:
+        case JK_SINGLEQUOTE_NUM:
+            tap_code(KC_QUOT);
+            break;
+        case KL_GRAVE_DEF:
+        case KL_GRAVE_NUM:
+            tap_code(KC_GRV);
+            break;
     }
 }
 
@@ -430,10 +471,6 @@ bool oled_task_user(void) {
 #endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (record->event.pressed) {
-        last_keypress_time = timer_read();
-    }
-
     if (keycode >= NAV_Q && keycode <= NAV_SLASH) {
         return false;
     }
